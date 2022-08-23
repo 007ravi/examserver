@@ -28,6 +28,12 @@ public class User implements UserDetails
     private boolean enabled=true;
     private String profile;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore//avoid circular json
+    private Set<Result> result;
+
+
+
     //user many roles
     //cascade ALL=when we want to delete user then user role for that user get delete or if we save user then user role get automatically save
     // fetch eager = when user get fetch then its role also get fetch
@@ -142,6 +148,14 @@ public class User implements UserDetails
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Set<Result> getResult() {
+        return result;
+    }
+
+    public void setResult(Set<Result> result) {
+        this.result = result;
     }
 
     @Override
