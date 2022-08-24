@@ -35,4 +35,10 @@ public class ResultController {
         return ResponseEntity.ok("Result added");
     }
 
+    @GetMapping("/")
+    public ResponseEntity<?> getResultByUser(){
+
+        List<Result>results=this.resultService.getAllResults();
+        return ResponseEntity.ok(results);
+    }
 }

@@ -9,4 +9,6 @@ public interface ResultService {
 
     public List<Result> getResultByUser(User user);
     public Result addResult(Result result);
+
+    List<Result> getAllResults();
 }

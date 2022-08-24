@@ -26,4 +26,9 @@ public class ResultServiceImpl implements ResultService {
 
         return this.resultRepository.save(result);
     }
+
+    @Override
+    public List<Result> getAllResults() {
+        return this.resultRepository.findAll();
+    }
 }
