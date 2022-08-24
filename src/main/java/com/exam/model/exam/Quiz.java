@@ -1,5 +1,6 @@
 package com.exam.model.exam;
 
+import com.exam.model.Result;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -30,6 +31,10 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz",fetch = FetchType.LAZY,cascade = CascadeType.ALL)//fetchtype.lazy means when we call getter of questions then data will load otherwise it will not load
     @JsonIgnore//question data will not fetch while fetching quiz
     private Set<Question> questions=new HashSet<>();
+
+    @OneToMany(mappedBy = "quiz")
+    @JsonIgnore
+    private Set<Result> results=new HashSet<>();
 
     public Quiz() {
     }
@@ -105,5 +110,13 @@ public class Quiz {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Set<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(Set<Result> results) {
+        this.results = results;
     }
 }

@@ -1,5 +1,7 @@
 package com.exam.model;
 
+import com.exam.model.exam.Quiz;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -22,16 +24,21 @@ public class Result {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name="quiz_id")
+    private Quiz quiz;
+
     public Result() {
     }
 
-    public Result(long rid, long marks, int questionsAttempted, int correctAnswer, Date attemptedDate, User user) {
+    public Result(long rid, long marks, int questionsAttempted, int correctAnswer, Date attemptedDate, User user,Quiz quiz) {
         this.rid = rid;
         this.marks = marks;
         this.questionsAttempted = questionsAttempted;
         this.correctAnswer = correctAnswer;
         this.attemptedDate = attemptedDate;
         this.user = user;
+        this.quiz=quiz;
     }
 
     public long getRid() {
@@ -80,5 +87,13 @@ public class Result {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Quiz getQuiz() {
+        return quiz;
+    }
+
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
     }
 }
