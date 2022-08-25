@@ -2,6 +2,7 @@ package com.exam.service.impl;
 
 import com.exam.model.Result;
 import com.exam.model.User;
+import com.exam.model.exam.Quiz;
 import com.exam.repo.ResultRepository;
 import com.exam.service.ResultService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,11 @@ public class ResultServiceImpl implements ResultService {
     @Override
     public List<Result> getAllResults() {
         return this.resultRepository.findAll();
+    }
+
+    @Override
+    public List<Result> getResultByQuiz(Quiz quiz){
+        List<Result>results=this.resultRepository.findByQuiz(quiz);
+        return results;
     }
 }
